@@ -1,6 +1,6 @@
 # Learn with Upendra
 
-Free English Learning Platform for NEB Students.
+Free English Learning Platform for Secondary Level Students.
 
 ## Features
 - English Grammar
