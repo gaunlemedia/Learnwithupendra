@@ -1,15 +1,32 @@
-// Learn with Upendra
+document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll(".content-section");
+    const startBtn = document.getElementById("start-learning-btn");
 
-document.addEventListener("DOMContentLoaded", function () {
+    // सेक्सन स्विच गर्ने फङ्सन
+    function showSection(sectionId) {
+        sections.forEach(section => {
+            if (section.id === `${sectionId}-section`) {
+                section.style.display = "block";
+            } else {
+                section.style.display = "none";
+            }
+        });
+    }
 
-    alert("📚 Welcome to Learn with Upendra!");
+    // मेनुका लिंकहरू क्लिक गर्दा सेक्सन फेर्ने
+    navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetSection = link.getAttribute("data-section");
+            showSection(targetSection);
+        });
+    });
 
-});
-
-const btn = document.querySelector(".hero button");
-
-btn.addEventListener("click", function () {
-
-    alert("🚀 English Learning Section Coming Soon!");
-
+    // "Start Learning" बटन थिच्दा सिधै Grammar सेक्सनमा लैजाने
+    if (startBtn) {
+        startBtn.addEventListener("click", () => {
+            showSection("grammar");
+        });
+    }
 });
