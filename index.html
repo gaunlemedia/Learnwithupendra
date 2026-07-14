@@ -1,151 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Learn with Upendra</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn with Upendra - Quality Education For Every Student</title>
+    <!-- Tailwind CSS for modern responsive design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+        }
+        .active-nav {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 0.375rem;
+        }
+    </style>
 </head>
+<body class="flex flex-col min-h-screen">
 
-<body>
+    <!-- HEADER & NAVIGATION -->
+    <header class="bg-blue-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Brand Info -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('home')">
+                <div class="bg-white p-2 rounded-full w-10 h-10 flex items-center justify-center text-blue-700 font-bold text-lg shadow-inner">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">Learn with Upendra</h1>
+                    <p class="text-xs text-blue-200 hidden sm:block">Quality Education For Every Student</p>
+                </div>
+            </div>
 
-<header>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-1">
+                <button onclick="showSection('home')" class="nav-btn px-4 py-2 hover:bg-blue-600 transition duration-200 active-nav" data-target="home"><i class="fa-solid fa-house mr-1"></i> Home</button>
+                <button onclick="showSection('grammar')" class="nav-btn px-4 py-2 hover:bg-blue-600 transition duration-200" data-target="grammar"><i class="fa-solid fa-book mr-1"></i> Grammar</button>
+                <button onclick="showSection('notes')" class="nav-btn px-4 py-2 hover:bg-blue-600 transition duration-200" data-target="notes"><i class="fa-solid fa-file-lines mr-1"></i> Notes</button>
+                <button onclick="showSection('videos')" class="nav-btn px-4 py-2 hover:bg-blue-600 transition duration-200" data-target="videos"><i class="fa-solid fa-video mr-1"></i> Videos</button>
+                <button onclick="showSection('quiz')" class="nav-btn px-4 py-2 hover:bg-blue-600 transition duration-200" data-target="quiz"><i class="fa-solid fa-gamepad mr-1"></i> Quiz</button>
+                <button onclick="showSection('about')" class="nav-btn px-4 py-2 hover:bg-blue-600 transition duration-200" data-target="about"><i class="fa-solid fa-circle-info mr-1"></i> About</button>
+            </nav>
 
-<img src="images/logo.png" class="logo" alt="Learn with Upendra Logo">
+            <!-- Mobile Navigation Toggle -->
+            <button id="mobile-menu-toggle" class="md:hidden text-2xl focus:outline-none p-1">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
 
-<h1>Learn with Upendra</h1>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-800 border-t border-blue-600 py-2">
+            <div class="flex flex-col space-y-1 px-4">
+                <button onclick="showSection('home')" class="mobile-nav-btn text-left py-2 px-3 hover:bg-blue-700 rounded transition duration-200"><i class="fa-solid fa-house w-6"></i> Home</button>
+                <button onclick="showSection('grammar')" class="mobile-nav-btn text-left py-2 px-3 hover:bg-blue-700 rounded transition duration-200"><i class="fa-solid fa-book w-6"></i> Grammar</button>
+                <button onclick="showSection('notes')" class="mobile-nav-btn text-left py-2 px-3 hover:bg-blue-700 rounded transition duration-200"><i class="fa-solid fa-file-lines w-6"></i> Notes</button>
+                <button onclick="showSection('videos')" class="mobile-nav-btn text-left py-2 px-3 hover:bg-blue-700 rounded transition duration-200"><i class="fa-solid fa-video w-6"></i> Videos</button>
+                <button onclick="showSection('quiz')" class="mobile-nav-btn text-left py-2 px-3 hover:bg-blue-700 rounded transition duration-200"><i class="fa-solid fa-gamepad w-6"></i> Quiz</button>
+                <button onclick="showSection('about')" class="mobile-nav-btn text-left py-2 px-3 hover:bg-blue-700 rounded transition duration-200"><i class="fa-solid fa-circle-info w-6"></i> About</button>
+            </div>
+        </div>
+    </header>
 
-<p>Quality Education For Every Student</p>
+    <!-- MAIN SECTIONS CONTAINER -->
+    <main class="flex-grow max-w-6xl w-full mx-auto p-4 sm:p-6">
 
-<nav>
+        <!-- 1. HOME SECTION -->
+        <section id="home-section" class="app-section space-y-8">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 sm:p-12 text-white text-center shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 text-9xl text-white opacity-10">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-3">Welcome Students</h2>
+                <p class="text-blue-100 text-lg mb-6 max-w-xl mx-auto">Learn English in an Easy and Smart Way. Access interactive lessons, structured class notes, and high-quality quiz practice anytime.</p>
+                <button onclick="showSection('grammar')" class="bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-3.5 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition duration-200 text-lg">
+                    <i class="fa-solid fa-rocket mr-2"></i>Start Learning
+                </button>
+            </div>
 
-<nav>
-  <a href="#" class="nav-link" data-section="home">Home</a>
-  <a href="#" class="nav-link" data-section="grammar">Grammar</a>
-  <a href="#" class="nav-link" data-section="notes">Notes</a>
-  <a href="#" class="nav-link" data-section="videos">Videos</a>
-  <a href="#" class="nav-link" data-section="quiz">Quiz</a>
-  <a href="#" class="nav-link" data-section="about">About</a>
-</nav>
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- English Grammar -->
+                <div onclick="showSection('grammar')" class="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:border-blue-400 cursor-pointer transform hover:-translate-y-1 transition duration-300 flex items-start space-x-4">
+                    <div class="bg-blue-100 p-3 rounded-lg text-blue-600 text-2xl"><i class="fa-solid fa-spell-check"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-1">English Grammar</h3>
+                        <p class="text-slate-600 text-sm">Master Tenses, Voice, Narration, Articles, Prepositions and more with simple examples and dynamic rules.</p>
+                    </div>
+                </div>
+                <!-- NEB Notes -->
+                <div onclick="showSection('notes')" class="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:border-blue-400 cursor-pointer transform hover:-translate-y-1 transition duration-300 flex items-start space-x-4">
+                    <div class="bg-purple-100 p-3 rounded-lg text-purple-600 text-2xl"><i class="fa-solid fa-book-open"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-1">NEB Notes</h3>
+                        <p class="text-slate-600 text-sm">Access structured chapter summaries, questions, answers, and syllabus material for Class 9, 10, 11 & 12.</p>
+                    </div>
+                </div>
+                <!-- Video Lessons -->
+                <div onclick="showSection('videos')" class="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:border-blue-400 cursor-pointer transform hover:-translate-y-1 transition duration-300 flex items-start space-x-4">
+                    <div class="bg-red-100 p-3 rounded-lg text-red-600 text-2xl"><i class="fa-solid fa-circle-play"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-1">Video Lessons</h3>
+                        <p class="text-slate-600 text-sm">Watch simplified English classes and grammar explanations curated straight from our YouTube channel.</p>
+                    </div>
+                </div>
+                <!-- Practice Quiz -->
+                <div onclick="showSection('quiz')" class="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:border-blue-400 cursor-pointer transform hover:-translate-y-1 transition duration-300 flex items-start space-x-4">
+                    <div class="bg-green-100 p-3 rounded-lg text-green-600 text-2xl"><i class="fa-solid fa-award"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-1">Interactive Quiz</h3>
+                        <p class="text-slate-600 text-sm">Test your English skills instantly. Answer standard exam questions and check your knowledge score.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. GRAMMAR SECTION (Accordion) -->
+        <section id="grammar-section" class="app-section hidden space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl font-bold text-slate-800"><i class="fa-solid fa-spell-check text-blue-600 mr-2"></i>English Grammar Lessons</h2>
+                <p class="text-slate-500">Choose a topic below to read detailed rules and simple illustrative examples.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Accordion Item 1 -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="w-full text-left p-4 font-semibold text-slate-800 flex justify-between items-center hover:bg-slate-50 focus:outline-none" onclick="toggleAccordion('grammar-1')">
+                        <span>1. Subject-Verb Agreement</span>
+                        <i id="icon-grammar-1" class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+                    </button>
+                    <div id="grammar-1" class="hidden p-4 bg-slate-50 border-t border-slate-200 text-slate-700 space-y-2 text-sm leading-relaxed">
+                        <p class="font-semibold text-blue-700">Core Rule:</p>
+                        <p>Singular subjects must take singular verbs, and plural subjects must take plural verbs.</p>
+                        <div class="bg-white p-3 rounded border border-slate-200 mt-2 space-y-1">
+                            <p><strong>Example (Singular):</strong> He <span class="text-green-600 font-semibold">likes</span> reading novels. (He = Singular, likes = Singular verb)</p>
+                            <p><strong>Example (Plural):</strong> They <span class="text-green-600 font-semibold">like</span> playing basketball. (They = Plural, like = Plural verb)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="w-full text-left p-4 font-semibold text-slate-800 flex justify-between items-center hover:bg-slate-50 focus:outline-none" onclick="toggleAccordion('grammar-2')">
+                        <span>2. Tenses Made Simple</span>
+                        <i id="icon-grammar-2" class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+                    </button>
+                    <div id="grammar-2" class="hidden p-4 bg-slate-50 border-t border-slate-200 text-slate-700 space-y-3 text-sm leading-relaxed">
+                        <p>Tense represents the form taken by a verb to show the time of an action.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="bg-white p-3 rounded border border-slate-200">
+                                <h4 class="font-bold text-blue-700 mb-1">Present Tense</h4>
+                                <p class="text-xs text-slate-500 mb-1">Subject + V1/V5 + Object</p>
+                                <p class="italic text-slate-600">"She cooks food."</p>
+                            </div>
+                            <div class="bg-white p-3 rounded border border-slate-200">
+                                <h4 class="font-bold text-blue-700 mb-1">Past Tense</h4>
+                                <p class="text-xs text-slate-500 mb-1">Subject + V2 + Object</p>
+                                <p class="italic text-slate-600">"She cooked food."</p>
+                            </div>
+                            <div class="bg-white p-3 rounded border border-slate-200">
+                                <h4 class="font-bold text-blue-700 mb-1">Future Tense</h4>
+                                <p class="text-xs text-slate-500 mb-1">Subject + will/shall + V1 + Object</p>
+                                <p class="italic text-slate-600">"She will cook food."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="w-full text-left p-4 font-semibold text-slate-800 flex justify-between items-center hover:bg-slate-50 focus:outline-none" onclick="toggleAccordion('grammar-3')">
+                        <span>3. Active & Passive Voice</span>
+                        <i id="icon-grammar-3" class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+                    </button>
+                    <div id="grammar-3" class="hidden p-4 bg-slate-50 border-t border-slate-200 text-slate-700 space-y-2 text-sm leading-relaxed">
+                        <p><strong>Active:</strong> The focus is on the doer of the action.</p>
+                        <p><strong>Passive:</strong> The focus is on the receiver of the action (Object turns into Subject).</p>
+                        <div class="bg-white p-3 rounded border border-slate-200 space-y-1">
+                            <p><strong>Active:</strong> Ram kicked the ball.</p>
+                            <p><strong>Passive:</strong> The ball <span class="text-green-600 font-semibold">was kicked by</span> Ram.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 4 -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="w-full text-left p-4 font-semibold text-slate-800 flex justify-between items-center hover:bg-slate-50 focus:outline-none" onclick="toggleAccordion('grammar-4')">
+                        <span>4. Direct and Indirect Speech</span>
+                        <i id="icon-grammar-4" class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+                    </button>
+                    <div id="grammar-4" class="hidden p-4 bg-slate-50 border-t border-slate-200 text-slate-700 space-y-2 text-sm leading-relaxed">
+                        <p>Direct speech reports exact words spoken. Indirect speech reports the general meaning of what was said without quotation marks.</p>
+                        <div class="bg-white p-3 rounded border border-slate-200 space-y-1">
+                            <p><strong>Direct:</strong> He said, "I am tired."</p>
+                            <p><strong>Indirect:</strong> He said <span class="text-green-600 font-semibold">that he was</span> tired.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. NEB NOTES SECTION -->
+        <section id="notes-section" class="app-section hidden space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl font-bold text-slate-800"><i class="fa-solid fa-book-open text-purple-600 mr-2"></i>NEB English Notes</h2>
+                <p class="text-slate-500">Pick your class to view curated summaries, notes, and textbook guides.</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-px">
+                <button onclick="switchNotesClass('class9')" class="class-tab-btn py-2.5 px-5 font-semibold text-sm border-b-2 border-transparent hover:text-blue-600 focus:outline-none transition duration-150 border-blue-600 text-blue-600" id="tab-class9">Class 9</button>
+                <button onclick="switchNotesClass('class10')" class="class-tab-btn py-2.5 px-5 font-semibold text-sm border-b-2 border-transparent hover:text-blue-600 focus:outline-none transition duration-150 text-slate-500" id="tab-class10">Class 10</button>
+                <button onclick="switchNotesClass('class11')" class="class-tab-btn py-2.5 px-5 font-semibold text-sm border-b-2 border-transparent hover:text-blue-600 focus:outline-none transition duration-150 text-slate-500" id="tab-class11">Class 11</button>
+                <button onclick="switchNotesClass('class12')" class="class-tab-btn py-2.5 px-5 font-semibold text-sm border-b-2 border-transparent hover:text-blue-600 focus:outline-none transition duration-150 text-slate-500" id="tab-class12">Class 12</button>
+            </div>
+
+            <!-- Class 9 Notes Content -->
+            <div id="notes-class9" class="class-note-content space-y-4">
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Class 9 - Grammar Topics</h3>
+                    <ul class="list-disc pl-5 text-slate-600 space-y-1 text-sm">
+                        <li>Articles: a, an, the usage and omissions</li>
+                        <li>Prepositions: in, on, at, by, with, for</li>
+                        <li>Transformation of Sentences (Affirmative to Negative)</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Class 9 - Sample Chapter Guide</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-3">Learn all lesson reviews, summaries, reading comprehensions, and exercise materials tailored specifically to Class 9 NEB Curriculum guidelines.</p>
+                    <button class="bg-blue-600 text-white text-xs font-semibold px-4 py-2 rounded hover:bg-blue-700 transition">View Full Guide</button>
+                </div>
+            </div>
+
+            <!-- Class 10 Notes Content -->
+            <div id="notes-class10" class="class-note-content hidden space-y-4">
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Class 10 - SEE Special Notes</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-3">Key textbook topics and essay outlines frequently queried in the Secondary Education Examination (SEE).</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                        <div class="p-3 bg-slate-50 rounded border border-slate-200">
+                            <h4 class="font-bold text-sm text-slate-800 mb-1">Unseen Passages tips</h4>
+                            <p class="text-xs text-slate-500">Effective methods to score high on comprehension reading questions.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border border-slate-200">
+                            <h4 class="font-bold text-sm text-slate-800 mb-1">Free Writing Formats</h4>
+                            <p class="text-xs text-slate-500">Perfect formatting for Letter writing, Job Applications, and Book Reviews.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Class 11 Notes Content -->
+            <div id="notes-class11" class="class-note-content hidden space-y-4">
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Class 11 - Literature & Grammar</h3>
+                    <ul class="list-disc pl-5 text-slate-600 space-y-1 text-sm">
+                        <li><strong>Short Stories:</strong> The Selfish Giant, The Oval Portrait, etc.</li>
+                        <li><strong>Poems:</strong> Corona Says, All the World's a Stage.</li>
+                        <li><strong>Essays:</strong> Sharing Tradition, How To Live Before You Die.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Class 12 Notes Content -->
+            <div id="notes-class12" class="class-note-content hidden space-y-4">
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Class 12 - Advanced English Guide</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-3">Comprehensive collection of questions & answers, critical analysis, character sketches, and summaries for all Prose, Poetry, and One-Act Plays in Class 12 NEB Syllabus.</p>
+                    <button class="bg-blue-600 text-white text-xs font-semibold px-4 py-2 rounded hover:bg-blue-700 transition">Download PDF Summaries</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. VIDEOS SECTION -->
+        <section id="videos-section" class="app-section hidden space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl font-bold text-slate-800"><i class="fa-solid fa-circle-play text-red-600 mr-2"></i>Video Lessons</h2>
+                <p class="text-slate-500">Video tutorials that make tricky English grammar rules fun and intuitive.</p>
+            </div>
+
+            <!-- Video Gallery -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Video Item 1 -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="aspect-video bg-slate-800 relative flex items-center justify-center">
+                        <!-- Custom Embed Placeholder (Replace with your actual YouTube Embed Link) -->
+                        <div class="absolute inset-0 bg-cover bg-center opacity-60" style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg')"></div>
+                        <i class="fa-brands fa-youtube text-red-600 text-6xl relative z-10 cursor-pointer hover:scale-110 transition duration-200"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-slate-800">Learn Tenses Easily in 10 Minutes</h3>
+                        <p class="text-xs text-slate-500 mt-1">A simple guide showing shortcut tables to recognize all English forms.</p>
+                    </div>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="aspect-video bg-slate-800 relative flex items-center justify-center">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-60" style="background-image: url('https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg')"></div>
+                        <i class="fa-brands fa-youtube text-red-600 text-6xl relative z-10 cursor-pointer hover:scale-110 transition duration-200"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-slate-800">Active and Passive Voice Rules</h3>
+                        <p class="text-xs text-slate-500 mt-1">Transform sentences confidently in terminal exams with step-by-step guidance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INTERACTIVE QUIZ SECTION -->
+        <section id="quiz-section" class="app-section hidden space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl font-bold text-slate-800"><i class="fa-solid fa-award text-green-600 mr-2"></i>English Practice Quiz</h2>
+                <p class="text-slate-500">Test your English skills. Select an answer and proceed step-by-step.</p>
+            </div>
+
+            <!-- Quiz Main Card -->
+            <div id="quiz-wrapper" class="bg-white rounded-2xl shadow-md border border-slate-100 max-w-xl mx-auto p-6 sm:p-8">
+                <!-- Quiz Progress -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-center text-sm mb-2">
+                        <span class="text-slate-500">Progress</span>
+                        <span id="quiz-progress-text" class="font-semibold text-blue-700">Question 1 of 5</span>
+                    </div>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5">
+                        <div id="quiz-progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style="width: 20%"></div>
+                    </div>
+                </div>
+
+                <!-- Question Title -->
+                <div id="question-box" class="mb-6">
+                    <h3 id="question-text" class="text-lg font-bold text-slate-800">1. Question placeholder text goes here?</h3>
+                </div>
+
+                <!-- Options -->
+                <div id="options-container" class="space-y-3 mb-6">
+                    <!-- Option buttons will be generated by JS here dynamically -->
+                </div>
+
+                <!-- Navigation buttons inside Quiz -->
+                <div class="flex justify-end space-x-3">
+                    <button id="next-question-btn" disabled class="bg-blue-600 text-white font-semibold py-2.5 px-6 rounded-lg shadow disabled:opacity-50 hover:bg-blue-700 transition" onclick="handleNextQuestion()">
+                        Next Question <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Result Card (Hidden Initially) -->
+            <div id="quiz-result-wrapper" class="hidden bg-white rounded-2xl shadow-md border border-slate-100 max-w-md mx-auto p-8 text-center space-y-6">
+                <div class="text-6xl text-amber-500"><i class="fa-solid fa-trophy"></i></div>
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-1">Congratulations!</h3>
+                    <p class="text-slate-500">You completed the English Practice Quiz</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <p class="text-xs uppercase font-bold text-slate-500 tracking-wider">Your Score</p>
+                    <p id="score-text" class="text-4xl font-extrabold text-blue-700 mt-1">4 / 5</p>
+                </div>
+                <p id="result-message" class="text-sm text-slate-600">Great job! Keep practicing to secure top results in exams.</p>
+                <button onclick="resetQuiz()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">
+                    <i class="fa-solid fa-rotate-left mr-1"></i> Try Again
+                </button>
+            </div>
+        </section>
+
+        <!-- 6. ABOUT SECTION -->
+        <section id="about-section" class="app-section hidden space-y-6">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl font-bold text-slate-800"><i class="fa-solid fa-circle-info text-blue-600 mr-2"></i>About Learn with Upendra</h2>
+                <p class="text-slate-500">Know more about our vision, purpose, and online teaching journey.</p>
+            </div>
+
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                <p class="text-slate-600 leading-relaxed">
+                    <strong>Learn with Upendra</strong> is a free educational platform built with the mission of providing top-notch English lessons and course notes for secondary-level students in Nepal. Our goal is to break the barrier of high-cost materials and offer high-quality, straightforward interactive tools that foster rapid and robust learning.
+                </p>
+                <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-1">Contact & Support</h4>
+                        <p class="text-sm text-slate-500"><i class="fa-solid fa-envelope mr-1.5"></i> support@learnwithupendra.edu</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-1">Social Links</h4>
+                        <div class="flex space-x-3 mt-1.5">
+                            <a href="#" class="text-blue-600 text-xl hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" class="text-red-600 text-xl hover:scale-110 transition"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+            <p class="text-sm">© 2026 Learn with Upendra. All rights reserved.</p>
+            <p class="text-xs text-slate-500">Made for secondary level English students.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Navigation Switching Logic
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.app-section');
+            sections.forEach(section => section.classList.add('hidden'));
+
+            // Show selected section
+            const targetSection = document.getElementById(`${sectionId}-section`);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
+            // Update desktop active navigation link styling
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                if (btn.getAttribute('data-target') === sectionId) {
+                    btn.classList.add('active-nav');
+                } else {
+                    btn.classList.remove('active-nav');
+                }
+            });
+
+            // Close mobile menu on switch
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // Toggle mobile menu dropdown
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
 
 
-</nav>
+        // 2. Accordion Control Logic
+        function toggleAccordion(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id}`);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                el.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
 
-</header>
 
-<section class="hero">
-<!-- १. होम पेज सेक्सन (यो सुरुमा देखिन्छ) -->
-<section id="home-section" class="content-section">
-  <!-- तपाईंको साविककै Hero र Cards सेक्सन यहाँ भित्र रहन्छन् -->
-  <div class="hero">
-    <h2>Welcome Students</h2>
-    <p>Learn English in an Easy and Smart Way.</p>
-    <button id="start-learning-btn">Start Learning</button>
-  </div>
+        // 3. NEB Notes Class Tab Switching
+        function switchNotesClass(classId) {
+            // Hide all class contents
+            const contents = document.querySelectorAll('.class-note-content');
+            contents.forEach(content => content.classList.add('hidden'));
 
-  <div class="cards">
-    <!-- तपाईंको कोडमा भएका सबै <div class="card"> हरू यहाँ भित्र राख्नुहोस् -->
-    <div class="card">
-      <h3>English Grammar</h3>
-      <p>Tenses, Voice, Narration, Articles, Prepositions and more.</p>
-    </div>
-    <!-- अरु कार्डहरु पनि यसकै तल... -->
-  </div>
-</section>
+            // Deactivate all tab borders
+            const tabs = document.querySelectorAll('.class-tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('border-blue-600', 'text-blue-600');
+                tab.classList.add('text-slate-500');
+            });
 
-<!-- २. ग्रामर सेक्सन (सुरुमा लुकेको हुन्छ) -->
-<section id="grammar-section" class="content-section" style="display: none;">
-  <div class="hero">
-    <h2>English Grammar Lessons</h2>
-    <p>यहाँ व्याकरणका पाठहरू बिस्तारै थपिँदै जानेछन्।</p>
-  </div>
-</section>
+            // Show selected class contents
+            document.getElementById(`notes-${classId}`).classList.remove('hidden');
 
-<!-- ३. नोट्स सेक्सन (सुरुमा लुकेको हुन्छ) -->
-<section id="notes-section" class="content-section" style="display: none;">
-  <div class="hero">
-    <h2>Class 9, 10, 11 & 12 Notes</h2>
-    <p>यहाँ नेपाली र अंग्रेजी माध्यमका नोटहरू राखिनेछ।</p>
-  </div>
-</section>
+            // Set active tab styling
+            const activeTab = document.getElementById(`tab-${classId}`);
+            activeTab.classList.remove('text-slate-500');
+            activeTab.classList.add('border-blue-600', 'text-blue-600');
+        }
 
-<!-- ४. भिडियो सेक्सन (सुरुमा लुकेको हुन्छ) -->
-<section id="videos-section" class="content-section" style="display: none;">
-  <div class="hero">
-    <h2>Video Lessons</h2>
-    <p>यहाँ युट्युबका भिडियो क्लासहरू राखिनेछ।</p>
-  </div>
-</section>
 
-<!-- ५. क्विज सेक्सन (सुरुमा लुकेको हुन्छ) -->
-<section id="quiz-section" class="content-section" style="display: none;">
-  <div class="hero">
-    <h2>Practice Quiz</h2>
-    <p>आफ्नो क्षमता जाँच्न यहाँ क्विज खेल्नुहोस्।</p>
-  </div>
-</section>
+        // 4. Stateful Quiz System
+        const quizData = [
+            {
+                question: "1. She _____ to school every day.",
+                options: ["go", "goes", "gone", "going"],
+                correct: 1
+            },
+            {
+                question: "2. Choose the correct article: He is _____ honorable teacher.",
+                options: ["a", "an", "the", "no article"],
+                correct: 1
+            },
+            {
+                question: "3. What is the passive form of: 'Ram writes a letter.'?",
+                options: ["A letter was written by Ram.", "A letter is writing by Ram.", "A letter is written by Ram.", "A letter had written by Ram."],
+                correct: 2
+            },
+            {
+                question: "4. Complete the phrase: She is interested _____ reading literature.",
+                options: ["at", "on", "in", "by"],
+                correct: 2
+            },
+            {
+                question: "5. Identify the past continuous tense form:",
+                options: ["We are studying English.", "We were studying English.", "We have studied English.", "We studied English."],
+                correct: 1
+            }
+        ];
 
-<!-- ६. हाम्रो बारेमा (About) सेक्सन -->
-<section id="about-section" class="content-section" style="display: none;">
-  <div class="hero">
-    <h2>About Learn with Upendra</h2>
-    <p>यो प्लेटफर्म विद्यार्थीहरूलाई नि:शुल्क र गुणस्तरीय शिक्षा प्रदान गर्न बनाइएको हो।</p>
-  </div>
-</section>
+        let currentQuizIndex = 0;
+        let score = 0;
+        let selectedOptionIndex = null;
 
-<h2>Welcome Students</h2>
+        function loadQuestion() {
+            const currentData = quizData[currentQuizIndex];
+            const qText = document.getElementById('question-text');
+            const progressText = document.getElementById('quiz-progress-text');
+            const progressBar = document.getElementById('quiz-progress-bar');
+            const nextBtn = document.getElementById('next-question-btn');
+            
+            // Set Text
+            qText.textContent = currentData.question;
+            progressText.textContent = `Question ${currentQuizIndex + 1} of ${quizData.length}`;
+            
+            // Set Progress Bar Width
+            const progressPercent = ((currentQuizIndex + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
 
-<p>Learn English in an Easy and Smart Way.</p>
+            // Reset Select States
+            selectedOptionIndex = null;
+            nextBtn.disabled = true;
 
-<button>Start Learning</button>
+            // Generate options dynamically
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
 
-</section>
+            currentData.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3.5 rounded-lg border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 transition duration-150 focus:outline-none flex items-center justify-between group";
+                btn.onclick = () => selectOption(index);
+                btn.innerHTML = `
+                    <span>${option}</span>
+                    <i class="fa-regular fa-circle text-slate-300 group-hover:text-blue-500"></i>
+                `;
+                container.appendChild(btn);
+            });
+        }
 
-<section class="cards">
+        function selectOption(index) {
+            const nextBtn = document.getElementById('next-question-btn');
+            const container = document.getElementById('options-container');
+            const optionButtons = container.querySelectorAll('button');
+            const currentCorrect = quizData[currentQuizIndex].correct;
 
-<div class="card">
+            selectedOptionIndex = index;
+            nextBtn.disabled = false; // Enable next button
 
-<h3>English Grammar</h3>
+            // Mark and show immediate correct/incorrect result highlight
+            optionButtons.forEach((btn, idx) => {
+                btn.disabled = true; // Stop further interaction
+                btn.className = "w-full text-left p-3.5 rounded-lg border focus:outline-none flex items-center justify-between transition duration-150";
 
-<p>Tenses, Voice, Narration, Articles, Prepositions and more.</p>
+                if (idx === currentCorrect) {
+                    // Highlight correct answer in Green
+                    btn.classList.add('bg-green-100', 'border-green-400', 'text-green-800');
+                    btn.innerHTML = `<span>${currentDataOptionText(idx)}</span> <i class="fa-solid fa-circle-check text-green-600 text-lg"></i>`;
+                } else if (idx === selectedOptionIndex) {
+                    // Highlight user incorrect selected answer in Red
+                    btn.classList.add('bg-red-100', 'border-red-400', 'text-red-800');
+                    btn.innerHTML = `<span>${currentDataOptionText(idx)}</span> <i class="fa-solid fa-circle-xmark text-red-600 text-lg"></i>`;
+                } else {
+                    btn.classList.add('bg-white', 'border-slate-200', 'text-slate-400');
+                    btn.innerHTML = `<span>${currentDataOptionText(idx)}</span> <i class="fa-regular fa-circle text-slate-200"></i>`;
+                }
+            });
 
-</div>
+            if (selectedOptionIndex === currentCorrect) {
+                score++;
+            }
+        }
 
-<div class="card">
+        function currentDataOptionText(idx) {
+            return quizData[currentQuizIndex].options[idx];
+        }
 
-<h3>NEB Notes</h3>
+        function handleNextQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
 
-<p>Class 9, 10, 11 & 12 English Notes.</p>
+        function showQuizResult() {
+            document.getElementById('quiz-wrapper').classList.add('hidden');
+            const resultWrapper = document.getElementById('quiz-result-wrapper');
+            resultWrapper.classList.remove('hidden');
 
-</div>
+            document.getElementById('score-text').textContent = `${score} / ${quizData.length}`;
 
-<div class="card">
+            // Personalized feedback texts
+            const msg = document.getElementById('result-message');
+            if (score === quizData.length) {
+                msg.textContent = "Perfect score! Outstanding grasp over the grammar fundamentals.";
+            } else if (score >= 3) {
+                msg.textContent = "Great job! A few more reviews and you'll be scoring 100%.";
+            } else {
+                msg.textContent = "Keep learning and practicing. Consistency is key to mastery.";
+            }
+        }
 
-<h3>Video Lessons</h3>
+        function resetQuiz() {
+            currentQuizIndex = 0;
+            score = 0;
+            selectedOptionIndex = null;
+            document.getElementById('quiz-result-wrapper').classList.add('hidden');
+            document.getElementById('quiz-wrapper').classList.remove('hidden');
+            loadQuestion();
+        }
 
-<p>Watch YouTube English Classes.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Quiz</h3>
-
-<p>Practice MCQ and Improve Skills.</p>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 Learn with Upendra
-
-</footer>
-
-<script src="script.js"></script>
-
+        // Initialize quiz on load
+        window.onload = () => {
+            loadQuestion();
+        }
+    </script>
 </body>
 </html>
+
