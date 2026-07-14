@@ -626,40 +626,43 @@
             loadQuestion();
         }
 
-        // Initialize quiz on load
+                // Initialize quiz on load
         window.onload = () => {
             loadQuestion();
-       // Service Worker Register गर्ने कोड
-if ('serviceWorker' in navigator) {
-        // PWA Install Button Logic
-    let deferredPrompt;
-    const installBtn = document.getElementById('install-pwa-btn');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // क्रोमको आफ्नै प्रम्प्टलाई रोक्ने
-        e.preventDefault();
-        deferredPrompt = e;
-        // हाम्रो आफ्नै "Install App" बटन देखाउने
-        if (installBtn) {
-            installBtn.classList.remove('hidden');
         }
-    });
 
-    if (installBtn) {
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                }
-                deferredPrompt = null;
-                installBtn.classList.add('hidden');
+        // Service Worker Register गर्ने र PWA Logic
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+            .then(() => console.log('Service Worker Registered'))
+            .catch((err) => console.log('Service Worker Failed', err));
+        }
+
+        // PWA Install Button Logic
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-pwa-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBtn) {
+                installBtn.classList.remove('hidden');
             }
         });
-    }
 
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    installBtn.classList.add('hidden');
+                }
+            });
+        }
     </script>
 </body>
 </html>
-
